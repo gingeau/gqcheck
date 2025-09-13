@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css" />
+  <title>Developed</title>
+</head>
+<style>
+  /* Click Me Button */
+.click-me-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff69b4;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.click-me-btn:hover {
+  background-color: #ff1493;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Box */
+.modal {
+  background: rgb(137, 175, 164);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1001;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Blur Background */
+.blurred {
+  filter: blur(8px);
+  transition: filter 0.3s ease;
+}
+
+/* Optional styling for smooth overlay */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+</style>
+<body>
+
+  <!-- Vignette Overlay -->
+  <div class="vignette-bg"></div>
+
+  <!-- Kiss Alert -->
+  <div class="kiss-alert" id="kissAlert">
+    chadddaaaaaaaa!!!!
+  </div>
+
+  <!-- Lock Screen -->
+  <div class="lock-screen" id="lockScreen">
+    <h2>✨Enter the magic word ✨</h2>
+    <h5>✨ Starts with the letter D ✨</h5>
+    <input type="text" id="magicWordInput" placeholder="Type here..." />
+    <button onclick="checkMagicWord()">Unlock</button>
+    <p class="error" id="errorText"></p>
+    <h6>Turn your volume up!!!</h6>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="music/SUGARCANE - Leonora (Official Lyric Video).mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Main Content (background) -->
+  <div class="container" id="mainContent">
+    <section class="hero">
+      <h1 class="glow-text">Happy Birthday, Editor-In-Cheif! 🎂</h1>
+      <p>Today we celebrate the amazing person you are. I would love to get to know you more!!! 💖</p>
+      <button id="openModalBtn" class="click-me-btn">Click Me</button>
+    </section>
+
+    <!-- Slideshow -->
+    <section class="slideshow">
+      <div class="slides">
+        <img src="images/photo1.jpg" class="slide" alt="Photo 1" />
+        <img src="images/photo2.jpg" class="slide" alt="Photo 2" />
+        <img src="images/photo3.jpg" class="slide" alt="Photo 3" />
+        <img src="images/photo4.jpg" class="slide" alt="Photo 4" />
+        <img src="images/photo5.jpg" class="slide" alt="Photo 5" />
+      </div>
+    </section>
+
+    <div class="dots-container">
+      <span class="dot" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+      <span class="dot" onclick="goToSlide(3)"></span>
+      <span class="dot" onclick="goToSlide(4)"></span>
+    </div>
+
+    <section class="footer">
+      <p>Me Reki hope to get to know you more! ❤️</p>
+    </section>
+  </div>
+
+  <!-- Modal Overlay (outside mainContent, so it won't blur) -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal">
+      <span class="close-btn" id="closeModalBtn">&times;</span>
+      <h3>You’re Amazing!</h3>
+      <p>Ganahan pako makaila nimo labi na ninyo GQ Fam! Nalingaw kaayo ko ganina kay tagaag chance na mas na duol ko ninyo. Happy raman diay ka kauban, dili rako maguol. Another princess napud akong atimanon. Thank you saimong presenec. Happy Birthday and God Bless you! 🌟</p>
+      <img src="images/photo5.jpg" alt="Special" style="max-width: 100%; border-radius: 8px; margin-top: 15px;">
+    </div>
+  </div>
+
+  <script>// MODAL LOGIC
+const openModalBtn = document.getElementById('openModalBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const modalOverlay = document.getElementById('modalOverlay');
+const mainContent = document.getElementById('mainContent');
+
+openModalBtn.addEventListener('click', () => {
+  modalOverlay.style.display = 'flex';
+  mainContent.classList.add('blurred');
+});
+
+closeModalBtn.addEventListener('click', () => {
+  modalOverlay.style.display = 'none';
+  mainContent.classList.remove('blurred');
+});
+
+// Optional: Close modal by clicking outside
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) {
+    modalOverlay.style.display = 'none';
+    mainContent.classList.remove('blurred');
+  }
+});
+</script>
+
+  <script src="script.js"></script>
+</body>
+</html>
